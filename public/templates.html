@@ -1,0 +1,88 @@
+<template id="mainView">
+    <div class="three columns">
+        <ul id="schemeLst"></ul>
+    </div>
+    <div class="nine columns">
+        <div id="content-top-btn" class="row">
+            <div class="six columns">
+                <div class="u-full-width content-row-btn active" data-id="scheme">Scheme</div>
+            </div>
+            <div class="six columns">
+                <div class="u-full-width content-row-btn" data-id="calculator">Calculator</div>
+            </div>
+        </div>
+        <div id="content"></div>
+    </div>
+</template>
+
+<template id="schemeLstItem">
+    <li class="schemelstItem">{{ schemeName }}</li>
+</template>
+
+<template id="scheme">
+    <div id="exerciseBtn">
+        <button>squate</button>
+        <button>bench</button>
+        <button>deadlift</button>
+        <button>oh-press</button>
+    </div>
+    <table class="u-full-width">
+        <thead>
+        <tr>
+            <td></td>
+            <td>Weight</td>
+            <td>Reps</td>
+            <td>Notes</td>
+        </tr>
+        </thead>
+        <tbody id="scheme-tbody"></tbody>
+    </table>
+</template>
+
+<template id="schemeTableRow">
+    <tr>
+        <td>{{ weight }}</td>
+        <td>{{ reps }}</td>
+        <td>{{ note }}</td>
+    </tr>
+</template>
+
+<template id="schemeTableFirstRow">
+    <tr>
+        <td rowspan="6">{{ exercise }}</td>
+        <td>{{ weight }}</td>
+        <td>{{ reps }}</td>
+        <td>{{ note }}</td>
+    </tr>
+</template>
+
+<template id="schemeTableRowAssistance">
+    <tr>
+        <td>{{ exercise }}</td>
+        <td>{{ weight }}</td>
+        <td>{{ reps }}</td>
+        <td>{{ note }}</td>
+    </tr>
+</template>
+
+<template id="RMCalculator">
+    <table id="calculate-RM" class="u-full-width">
+        <thead>
+        <tr>
+            <th colspan="2">Estimated RM</th>
+            <th>Weight used</th>
+            <th>Reps achieved</th>
+        </tr>
+        </thead>
+        <tbody id="calculatorTbody"></tbody>
+    </table>
+</template>
+
+<template id="RMCalculatorRow">
+    <tr>
+        <td><b>{{ exercise }}</b></td>
+        <td>{{ rm }}</td>
+        <td contenteditable="true">{{ weight }}</td>
+        <td contenteditable="true">{{ reps }}</td>
+    </tr>
+</template>
