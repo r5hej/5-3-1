@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Workout 531</string>
+    <string name="date">Date</string>
+    <string name="week">Week</string>
+    <string-array name="exercises">
+        <item>Squat</item>
+        <item>Bench</item>
+        <item>Deadlift</item>
+        <item>OH-Press</item>
+    </string-array>
 </resources>
