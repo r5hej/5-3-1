@@ -2,22 +2,32 @@
 
 let templates;
 let wrapper = document.getElementById('wrapper');
-let container, schemeLst, contentBtn;
+let container, schemaLst, contentBtn, cycles;
 
 function renderMain() {
     wrapper.innerHTML = templates.mainView.render();
     container = document.getElementById('content');
-    schemeLst = document.getElementById('schemeLst');
+    schemaLst = document.getElementById('schemaLst');
     contentBtn = document.getElementById('content-top-btn');
 
-    renderSchemeLst();
+    sendRequest('POST', '/schemas').then(resp => {
+        cycles = resp;
+        cycles.sort((a, b) => {
+            return b.iteration - a.iteration;
+        });
+        console.log(cycles);
+        renderSchemaLst();
+    }).catch(() => {
+        console.log('could not get schemas');
+    });
+
     contentBtn.on('click', 'div > div', ev => {
         contentBtn.querySelector('.active').classList.remove('active');
         ev.target.classList.add('active');
-        ev.target.dataset.id === "scheme" ? renderScheme() : renderCalculator();
+        ev.target.dataset.id === "schema" ? renderSchema() : renderCalculator();
     });
 
-    schemeLst.on('click', 'li', ev => {
+    schemaLst.on('click', 'li', ev => {
         console.log(ev.target);
     });
 }
@@ -36,23 +46,24 @@ function renderCalculator() {
     document.getElementById('calculatorTbody').innerHTML = html;
 }
 
-function renderScheme() {
-    container.innerHTML = templates.scheme.render();
+function renderSchema() {
+    container.innerHTML = templates.schema.render();
     let html = "";
-
     for (let i = 0; i < 5; i++) {
         if (i === 0) {
-            html += templates.schemeTableFirstRow.render({exercise: "squat"});
+            html += templates.schemaTableFirstRow.render({exercise: "squat"});
         }
-        html += templates.schemeTableRow.render();
+        html += templates.schemaTableRow.render();
     }
-    document.getElementById('scheme-tbody').innerHTML = html;
+    document.getElementById('schema-tbody').innerHTML = html;
 }
 
-function renderSchemeLst() {
-    schemeLst.innerHTML = templates.schemeLstItem.render({
-        schemeName: "1"
-    });
+function renderSchemaLst() {
+    let html = '';
+    for (let i = 0; i < cycles.length; i++) {
+        html += templates.schemaLstItem.render(cycles[i]);
+    }
+    schemaLst.innerHTML = html;
 }
 
 function sendRequest(method, url, data, json) {

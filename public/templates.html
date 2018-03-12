@@ -1,11 +1,11 @@
 <template id="mainView">
     <div class="three columns">
-        <ul id="schemeLst"></ul>
+        <ul id="schemaLst"></ul>
     </div>
     <div class="nine columns">
         <div id="content-top-btn" class="row">
             <div class="six columns">
-                <div class="u-full-width content-row-btn active" data-id="scheme">Scheme</div>
+                <div class="u-full-width content-row-btn active" data-id="schema">Scheme</div>
             </div>
             <div class="six columns">
                 <div class="u-full-width content-row-btn" data-id="calculator">Calculator</div>
@@ -15,11 +15,11 @@
     </div>
 </template>
 
-<template id="schemeLstItem">
-    <li class="schemelstItem">{{ schemeName }}</li>
+<template id="schemaLstItem">
+    <li class="schemalstItem" data-id="{{ iteration }}">{{ iteration }}</li>
 </template>
 
-<template id="scheme">
+<template id="schema">
     <div id="exerciseBtn">
         <button>squate</button>
         <button>bench</button>
@@ -35,11 +35,11 @@
             <td>Notes</td>
         </tr>
         </thead>
-        <tbody id="scheme-tbody"></tbody>
+        <tbody id="schema-tbody"></tbody>
     </table>
 </template>
 
-<template id="schemeTableRow">
+<template id="schemaTableRow">
     <tr>
         <td>{{ weight }}</td>
         <td>{{ reps }}</td>
@@ -47,7 +47,7 @@
     </tr>
 </template>
 
-<template id="schemeTableFirstRow">
+<template id="schemaTableFirstRow">
     <tr>
         <td rowspan="6">{{ exercise }}</td>
         <td>{{ weight }}</td>
@@ -56,7 +56,7 @@
     </tr>
 </template>
 
-<template id="schemeTableRowAssistance">
+<template id="schemaTableRowAssistance">
     <tr>
         <td>{{ exercise }}</td>
         <td>{{ weight }}</td>
