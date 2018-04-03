@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="sejtsoftware.workout531.CycleActivity"
-    tools:layout_editor_absoluteY="81dp">
+    tools:context="sejtsoftware.workout531.CycleActivity">
 
     <TextView
         android:layout_width="0dp"
@@ -111,10 +110,5 @@
         android:visibility="visible"
         app:layout_constraintTop_toTopOf="@+id/guideline5"/>
 
-
-
-    <!--<fragment android:name="sejtsoftware.workout531.ExercuseRiwFragment"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"/>-->
 
 </android.support.constraint.ConstraintLayout>
