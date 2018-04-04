@@ -18,7 +18,6 @@ public class Cycle {
     @ColumnInfo(name = "BenchRM")
     private double benchRM;
 
-    // Alle get-metoderne skal også findes i Data Access Object, no???
     public int getUid() {
         return uid;
     }

@@ -110,5 +110,10 @@
         android:visibility="visible"
         app:layout_constraintTop_toTopOf="@+id/guideline5"/>
 
+    <LinearLayout
+        android:id="@+id/exercise_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 
 </android.support.constraint.ConstraintLayout>
