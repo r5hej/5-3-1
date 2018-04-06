@@ -1,4 +1,4 @@
-package sejtsoftware.workout531.database_helper;
+package sejtsoftware.workout531.helpers.database;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;

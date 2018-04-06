@@ -1,4 +1,4 @@
-package sejtsoftware.workout531;
+package sejtsoftware.workout531.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,16 +8,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-// Implement onPause()
+import sejtsoftware.workout531.R;
 
 public class ExerciseRowFragment extends Fragment {
-    public ExerciseRowFragment() {
-    }
+//    public ExerciseRowFragment() {
+//    }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
