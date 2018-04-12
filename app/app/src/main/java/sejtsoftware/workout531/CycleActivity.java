@@ -3,8 +3,6 @@ package sejtsoftware.workout531;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import sejtsoftware.workout531.fragments.ExerciseRowFragment;
-
 public class CycleActivity extends AppCompatActivity {
 
     @Override
