@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".CycleActivity" />
         <activity android:name=".CalculatorEditActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
