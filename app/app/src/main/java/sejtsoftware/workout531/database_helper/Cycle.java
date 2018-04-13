@@ -18,7 +18,7 @@ public class Cycle {
     @ColumnInfo(name = "BenchRM")
     private double benchRM;
 
-    // Alle get-metoderne skal også findes i Data Access Object, no???
+    //region getters and setters
     public int getUid() {
         return uid;
     }
@@ -72,4 +72,5 @@ public class Cycle {
 
     @ColumnInfo(name = "OhRM")
     private double ohRM;
+    //endregion
 }
