@@ -1,6 +1,6 @@
 package sejtsoftware.workout531;
 
-import android.nfc.Tag;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -8,18 +8,27 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
+
 import sejtsoftware.workout531.fragments.CycleFragment;
+import sejtsoftware.workout531.helpers.database.Exercise;
+import sejtsoftware.workout531.helpers.database.ExerciseDatabase;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawer;
+    private ExerciseDatabase mDb;
+    private ArrayList<Exercise> mExercises;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mDb = ExerciseDatabase.getInstance(MainActivity.this);
 
         // Add initial fragment to base view
         CycleFragment initialFragment = new CycleFragment();
@@ -65,4 +74,26 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+//    private static class LoadAllExercisesTask extends AsyncTask<Void, Void, Boolean> {
+//        private WeakReference<MainActivity> mActivityRef;
+//        private List<Exercise> mExercises;
+//
+//        LoadAllExercisesTask(MainActivity context, List<Exercise> exercises) {
+//            mActivityRef = new WeakReference<>(context);
+//            mExercises = exercises;
+//        }
+//
+//        @Override
+//        protected List<Exercise> doInBackground(Void... voids) {
+//            mExercises = mActivityRef.get().mDb.getExerciseDao().loadAllExercises();
+//            return mExercises;
+//        }
+//
+//        @Override
+//        protected void onPostExecute(List<Exercise> result) {
+//
+//        }
+//    }
 }
