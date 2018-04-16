@@ -22,36 +22,33 @@ public class CycleListAdapter extends RecyclerView.Adapter<CycleListAdapter.View
         mData = data;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView weight;
         public TextView reps;
         public TextInputEditText repsAchived;
-        public View layout;
 
         public ViewHolder(View v) {
             super(v);
-            layout = v;
-            weight = v.findViewById(R.id.cycle_item_weight);
-            reps = v.findViewById(R.id.cycle_item_reps);
-            repsAchived = v.findViewById(R.id.cycle_item_reps_achieved);
+            weight = v.findViewById(R.id.cycle_row_weight);
+            reps = v.findViewById(R.id.cycle_row_reps);
+            repsAchived = v.findViewById(R.id.cycle_row_reps_achieved);
         }
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        TextView v = (TextView) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.cycle_recycler_item, parent, false);
-
-        ViewHolder vh = new ViewHolder(v);
-        return vh;
-
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View v = inflater.inflate(R.layout.cycle_exercise_list_row, parent, false);
+        return new ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.weight.setText(String.valueOf(mData.get(position).getmWeight()));
-        holder.reps.setText(String.valueOf(mData.get(position).getmReps()));
+        holder.weight.setText(String.valueOf(mData.get(position).getWeight()));
+        holder.reps.setText(String.valueOf(mData.get(position).getReps()));
+
+        // TODO: must show last row with editable input as visible, but not in a deload week
     }
 
 

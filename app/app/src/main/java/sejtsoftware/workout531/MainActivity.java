@@ -15,20 +15,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import sejtsoftware.workout531.fragments.CycleFragment;
-import sejtsoftware.workout531.helpers.database.Exercise;
-import sejtsoftware.workout531.helpers.database.ExerciseDatabase;
+//import sejtsoftware.workout531.helpers.database.Exercise;
+//import sejtsoftware.workout531.helpers.database.ExerciseDatabase;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawer;
-    private ExerciseDatabase mDb;
-    private ArrayList<Exercise> mExercises;
+//    private ExerciseDatabase mDb;
+//    private ArrayList<Exercise> mExercises;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mDb = ExerciseDatabase.getInstance(MainActivity.this);
+//        mDb = ExerciseDatabase.getInstance(MainActivity.this);
 
         // Add initial fragment to base view
         CycleFragment initialFragment = new CycleFragment();

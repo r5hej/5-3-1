@@ -33,11 +33,19 @@ public class Exercise {
         return mReps * mWeight * ONE_RM_CONSTANT + mWeight;
     }
 
-    public String getmName() {
+    public String getName() {
         return mName;
     }
 
-    public void setmName(String mName) {
-        this.mName = mName;
+    public void setName(String name) {
+        this.mName = name;
+    }
+
+    public int getWeight() {
+        return mWeight;
+    }
+
+    public int getReps() {
+        return mReps;
     }
 }
