@@ -7,21 +7,22 @@ public class Exercise {
     private int mReps;
     private int mWeight;
     private double mOneRm;
-    private int mCycle;
+    private int mCycle, mWeek;
 
     public Exercise(String name) {
-        this(name, 0, 0, 0);
+        this(name, 0, 0, 0, 0);
     }
 
     public Exercise(String name, int reps, int weight) {
-        this(name, reps, weight, 0);
+        this(name, reps, weight, 0, 0);
     }
 
-    public Exercise(String name, int reps, int weight, int cycle) {
+    public Exercise(String name, int reps, int weight, int cycle, int week) {
         this.mName = name;
         this.mReps = reps;
         this.mWeight = weight;
         this.mCycle = cycle;
+        mWeek = week;
         this.mOneRm = calculatedOneRm();
     }
 
@@ -47,5 +48,9 @@ public class Exercise {
 
     public int getReps() {
         return mReps;
+    }
+
+    public int getWeek() {
+        return mWeek;
     }
 }

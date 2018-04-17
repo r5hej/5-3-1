@@ -30,7 +30,7 @@ public class CycleFragment extends Fragment {
 
         ArrayList<Exercise> data = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
-            data.add(new Exercise("Squat", 5, 42));
+            data.add(new Exercise("Squat", 5, 42, 0,4));
         }
 
         RecyclerView rcView = getView().findViewById(R.id.cycle_recycle_list);

@@ -16,10 +16,15 @@ import sejtsoftware.workout531.models.Exercise;
 
 public class CycleListAdapter extends RecyclerView.Adapter<CycleListAdapter.ViewHolder> {
     private ArrayList<Exercise> mData;
+    private boolean isDeload = false;
+    private int mDataSize;
 
 
     public CycleListAdapter(ArrayList<Exercise> data) {
         mData = data;
+        mDataSize = mData.size();
+        if (mData.get(0).getWeek() == 4)
+            isDeload = true;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -48,12 +53,12 @@ public class CycleListAdapter extends RecyclerView.Adapter<CycleListAdapter.View
         holder.weight.setText(String.valueOf(mData.get(position).getWeight()));
         holder.reps.setText(String.valueOf(mData.get(position).getReps()));
 
-        // TODO: must show last row with editable input as visible, but not in a deload week
+        if (isDeload && position == mDataSize - 1)
+            holder.repsAchived.setVisibility(View.VISIBLE);
     }
-
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        return mDataSize;
     }
 }
