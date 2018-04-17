@@ -1,6 +1,5 @@
 package sejtsoftware.workout531;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -10,18 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
-
 import sejtsoftware.workout531.fragments.CycleFragment;
-//import sejtsoftware.workout531.helpers.database.Exercise;
+//import sejtsoftware.workout531.helpers.database.CoreExercise;
 //import sejtsoftware.workout531.helpers.database.ExerciseDatabase;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawer;
 //    private ExerciseDatabase mDb;
-//    private ArrayList<Exercise> mExercises;
+//    private ArrayList<CoreExercise> mExercises;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,19 +31,25 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize drawer and set event listener
         mDrawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(
+        NavigationView navViewLeft = findViewById(R.id.nav_view_left);
+        navViewLeft.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        // set item as selected to persist highlight
-                        menuItem.setChecked(true);
-
-                        // close drawer when item is tapped
+                    public boolean onNavigationItemSelected(MenuItem item) {
+                        item.setChecked(true);
                         mDrawer.closeDrawers();
 
-                        // Add code here to update the UI based on the item selected
-                        // For example, swap UI fragments here
+                        return true;
+                    }
+                });
+
+        NavigationView navViewRight = findViewById(R.id.nav_view_right);
+        navViewRight.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem item) {
+                        item.setChecked(true);
+                        mDrawer.closeDrawers();
 
                         return true;
                     }
@@ -78,21 +79,21 @@ public class MainActivity extends AppCompatActivity {
 
 //    private static class LoadAllExercisesTask extends AsyncTask<Void, Void, Boolean> {
 //        private WeakReference<MainActivity> mActivityRef;
-//        private List<Exercise> mExercises;
+//        private List<CoreExercise> mExercises;
 //
-//        LoadAllExercisesTask(MainActivity context, List<Exercise> exercises) {
+//        LoadAllExercisesTask(MainActivity context, List<CoreExercise> exercises) {
 //            mActivityRef = new WeakReference<>(context);
 //            mExercises = exercises;
 //        }
 //
 //        @Override
-//        protected List<Exercise> doInBackground(Void... voids) {
+//        protected List<CoreExercise> doInBackground(Void... voids) {
 //            mExercises = mActivityRef.get().mDb.getExerciseDao().loadAllExercises();
 //            return mExercises;
 //        }
 //
 //        @Override
-//        protected void onPostExecute(List<Exercise> result) {
+//        protected void onPostExecute(List<CoreExercise> result) {
 //
 //        }
 //    }

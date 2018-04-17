@@ -18,6 +18,12 @@ public class Cycle {
     @ColumnInfo(name = "BenchRM")
     private double benchRM;
 
+    @ColumnInfo(name = "DeadliftRM")
+    private double deadliftRM;
+
+    @ColumnInfo(name = "OhRM")
+    private double ohRM;
+
     //region getters and setters
     public int getUid() {
         return uid;
@@ -67,10 +73,5 @@ public class Cycle {
         this.ohRM = ohRM;
     }
 
-    @ColumnInfo(name = "DeadliftRM")
-    private double deadliftRM;
-
-    @ColumnInfo(name = "OhRM")
-    private double ohRM;
     //endregion
 }
