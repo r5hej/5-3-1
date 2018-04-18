@@ -15,15 +15,18 @@ import sejtsoftware.workout531.R;
 import sejtsoftware.workout531.models.CoreExercise;
 
 public class CycleCoreExerciseAdapter extends RecyclerView.Adapter<CycleCoreExerciseAdapter.ViewHolder> {
-    private ArrayList<CoreExercise> mData;
+    private int[][] mData;
     private boolean isDeload = false;
     private int mDataSize;
 
 
-    public CycleCoreExerciseAdapter(ArrayList<CoreExercise> data) {
-        mData = data;
-        mDataSize = mData.size() + 1;
-        if (mData.get(0).getWeek() == 4)
+    public CycleCoreExerciseAdapter(CoreExercise data) {
+        for (int i = 0; i < data.getSets().size(); i++) {
+            mData[i] = data.getSets().get(i);
+        }
+
+        mDataSize = mData.length + 1;
+        if (data.getWeek() == 4)
             isDeload = true;
     }
 
@@ -56,9 +59,10 @@ public class CycleCoreExerciseAdapter extends RecyclerView.Adapter<CycleCoreExer
             return;
         }
         position--;
+        int[] current = mData[position];
 
-//        holder.weight.setText(String.valueOf(mData.get(position).getWeight()));
-//        holder.reps.setText(String.valueOf(mData.get(position).getReps()));
+        holder.weight.setText(String.valueOf(current[0]));
+        holder.reps.setText(String.valueOf(current[0]));
 
         if (!isDeload && position == mDataSize - 2)
             holder.repsAchived.setVisibility(View.VISIBLE);
@@ -66,6 +70,6 @@ public class CycleCoreExerciseAdapter extends RecyclerView.Adapter<CycleCoreExer
 
     @Override
     public int getItemCount() {
-        return  mDataSize;
+        return mDataSize;
     }
 }

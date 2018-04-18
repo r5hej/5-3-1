@@ -11,9 +11,10 @@ public class Database {
         return sInstance;
     }
 
-    public static AppRoomDatabase getInstance(Context context) {
+    public static AppRoomDatabase init(Context context) {
         sInstance = Room
                 .databaseBuilder(context, AppRoomDatabase.class, "5-3-1_database")
+                .allowMainThreadQueries()
                 .build();
 
         return sInstance;

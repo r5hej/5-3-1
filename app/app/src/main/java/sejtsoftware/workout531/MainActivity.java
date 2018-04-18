@@ -9,7 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import sejtsoftware.workout531.fragments.CalculatorFragment;
 import sejtsoftware.workout531.fragments.CycleFragment;
+import sejtsoftware.workout531.helpers.database.Database;
 //import sejtsoftware.workout531.helpers.database.CoreExercise;
 //import sejtsoftware.workout531.helpers.database.ExerciseDatabase;
 
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
 //        mDb = ExerciseDatabase.getInstance(MainActivity.this);
 
+        Database.init(this);
+
         // Add initial fragment to base view
         CycleFragment initialFragment = new CycleFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_placeholder, initialFragment).commit();
@@ -37,6 +41,17 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem item) {
                         item.setChecked(true);
+
+                        switch (item.getTitle().toString()) {
+                            case "Cycle":
+                                break;
+
+                            case "Calculator":
+                                CalculatorFragment calcFragment = new CalculatorFragment();
+                                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_placeholder, calcFragment).commit();
+                                break;
+                        }
+
                         mDrawer.closeDrawers();
 
                         return true;

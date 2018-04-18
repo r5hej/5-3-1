@@ -1,5 +1,7 @@
 package sejtsoftware.workout531.models;
 
+import android.os.AsyncTask;
+
 import java.util.ArrayList;
 
 import sejtsoftware.workout531.helpers.database.Database;
@@ -79,6 +81,10 @@ public class CoreExercise {
 
     public int getWeek() {
         return mWeek;
+    }
+
+    public ArrayList<int[]> getSets() {
+        return mSets;
     }
 //    endregion
 }
