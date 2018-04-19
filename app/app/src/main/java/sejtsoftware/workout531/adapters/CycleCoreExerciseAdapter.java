@@ -15,17 +15,17 @@ import sejtsoftware.workout531.R;
 import sejtsoftware.workout531.models.CoreExercise;
 
 public class CycleCoreExerciseAdapter extends RecyclerView.Adapter<CycleCoreExerciseAdapter.ViewHolder> {
-    private int[][] mData;
+    private ArrayList<int[]> mData = new ArrayList<>();
     private boolean isDeload = false;
     private int mDataSize;
 
 
     public CycleCoreExerciseAdapter(CoreExercise data) {
         for (int i = 0; i < data.getSets().size(); i++) {
-            mData[i] = data.getSets().get(i);
+            mData.add(data.getSets().get(i));
         }
 
-        mDataSize = mData.length + 1;
+        mDataSize = mData.size() + 1;
         if (data.getWeek() == 4)
             isDeload = true;
     }
@@ -59,10 +59,10 @@ public class CycleCoreExerciseAdapter extends RecyclerView.Adapter<CycleCoreExer
             return;
         }
         position--;
-        int[] current = mData[position];
+        int[] current = mData.get(position);
 
         holder.weight.setText(String.valueOf(current[0]));
-        holder.reps.setText(String.valueOf(current[0]));
+        holder.reps.setText(String.valueOf(current[1]));
 
         if (!isDeload && position == mDataSize - 2)
             holder.repsAchived.setVisibility(View.VISIBLE);

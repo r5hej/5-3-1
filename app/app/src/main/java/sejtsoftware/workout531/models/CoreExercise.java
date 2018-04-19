@@ -10,7 +10,7 @@ public class CoreExercise {
     private static double ONE_RM_CONSTANT = 0.0333;
 
     private String mName;
-    private ArrayList<int[]> mSets;
+    private ArrayList<int[]> mSets = new ArrayList<>();
     private double mOneRm, mEstimatedOneRm;
     private int mCycle, mWeek;
 
@@ -26,7 +26,7 @@ public class CoreExercise {
         mName = name;
         mCycle = cycle;
         mWeek = week;
-        mEstimatedOneRm = Database.getInstance().activeRMValueDao().getRM(mName);
+        mEstimatedOneRm = Database.getInstance().activeRMValueDao().getRM(mName.toLowerCase());
         mOneRm = mEstimatedOneRm * 0.9;
         generateSets();
     }
