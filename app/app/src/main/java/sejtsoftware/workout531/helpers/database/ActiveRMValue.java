@@ -6,8 +6,8 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-@Entity(tableName = "ActiveRMValues")
-public class ActiveRMValues {
+@Entity(tableName = "ActiveRMValue")
+public class ActiveRMValue {
     @NonNull
     @PrimaryKey
     private String exerciseName;

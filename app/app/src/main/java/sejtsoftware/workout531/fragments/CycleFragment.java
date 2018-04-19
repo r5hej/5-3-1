@@ -30,7 +30,7 @@ public class CycleFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        CoreExercise coreExercise = new CoreExercise("Squat", 3, 3);
+//        CoreExercise coreExercise = ne CoreExercise("Squat", 3, 3);
 //        RecyclerView rcCore = getView().findViewById(R.id.cycle_core_recyclerview);
 //        CycleCoreExerciseAdapter coreAdapter = new CycleCoreExerciseAdapter(coreExercise);
 //        rcCore.setAdapter(coreAdapter);

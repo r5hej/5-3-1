@@ -8,18 +8,22 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Objects;
+import java.util.Set;
 
 import sejtsoftware.workout531.R;
 import sejtsoftware.workout531.helpers.Calculations;
+import sejtsoftware.workout531.helpers.database.ActiveRMValue;
+import sejtsoftware.workout531.helpers.database.Database;
 
 public class CalculatorFragment extends Fragment {
     private Hashtable<String, Hashtable<String, Integer>> mExerciseData =
@@ -40,38 +44,27 @@ public class CalculatorFragment extends Fragment {
         final ConstraintLayout layout = getView().findViewById(R.id.calculator_layout);
         final FloatingActionButton editBtn = getView().findViewById(R.id.calculator_edit_save_button);
 
+        // edit button locks/unlocks edittext views
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mEditableState = !mEditableState;
                 if (mEditableState) {
-                    for (int i = 0; i < layout.getChildCount(); i++) {
-                        View child = layout.getChildAt(i);
-                        if (child instanceof EditText) {
-                            child.setFocusable(true);
-                            child.setFocusableInTouchMode(true);
-                            child.setClickable(true);
-                            ((EditText) child).setCursorVisible(true);
-                        }
-                    }
-
+                    setViewEditable(layout, true);
                     editBtn.setImageResource(R.drawable.ic_save_black_24dp);
                     return;
                 }
 
-                for (int i = 0; i < layout.getChildCount(); i++) {
-                    View child = layout.getChildAt(i);
-                    if (child instanceof EditText) {
-                        child.setFocusable(false);
-                        child.setFocusableInTouchMode(false);
-                        child.setClickable(false);
-                        ((EditText) child).setCursorVisible(false);
-                    }
-                }
-
+                setViewEditable(layout, false);
                 editBtn.setImageResource(R.drawable.ic_edit_black_24dp);
+                updateRmsInDB();
             }
         });
+
+        // get rm values from DB, if they exists
+        if (Database.getInstance().activeRMValueDao().getRowCount() != 0) {
+            getRmsFromDB();
+        }
 
         for (int i = 0; i < layout.getChildCount(); i++) {
             View child = layout.getChildAt(i);
@@ -79,7 +72,7 @@ public class CalculatorFragment extends Fragment {
             if (child instanceof FloatingActionButton) continue;
 
             if (child instanceof EditText) {
-                // tags[0] = exercise, tags[1] = weight | reps
+                // tags[0]: exercise, tags[1]: weight | reps
                 String[] tags = child.getTag().toString().split(",");
 
                 if (!mExerciseData.containsKey(tags[0])) {
@@ -97,6 +90,44 @@ public class CalculatorFragment extends Fragment {
             }
 
             mTextViews.put(child.getTag().toString(), (TextView) child);
+
+        }
+    }
+
+    private void updateRmsInDB() {
+        Set<String> keys = mTextViews.keySet();
+
+        for (String key : keys) {
+            ActiveRMValue rm = new ActiveRMValue();
+
+            rm.setExerciseName(key);
+            rm.setRM(Integer.parseInt(mTextViews.get(key).getText().toString()));
+            rm.setWeight(mExerciseData.get(key).get("weight"));
+            rm.setReps(mExerciseData.get(key).get("reps"));
+
+            Database.getInstance().activeRMValueDao().insertRow(rm);
+        }
+    }
+
+    private void getRmsFromDB() {
+        ArrayList<ActiveRMValue> data = Database.getInstance().activeRMValueDao().getAll();
+
+        for (ActiveRMValue row : data) {
+            mExerciseData.put(row.getExerciseName(), new Hashtable<String, Integer>());
+            mExerciseData.get(row.getExerciseName()).put("weight", row.getWeight());
+            mExerciseData.get(row.getExerciseName()).put("reps", row.getReps());
+        }
+    }
+
+    private void setViewEditable(ConstraintLayout layout, boolean isEditable) {
+        for (int i = 0; i < layout.getChildCount(); i++) {
+            View child = layout.getChildAt(i);
+            if (child instanceof EditText) {
+                child.setFocusable(isEditable);
+                child.setFocusableInTouchMode(isEditable);
+                child.setClickable(isEditable);
+                ((EditText) child).setCursorVisible(isEditable);
+            }
         }
     }
 
