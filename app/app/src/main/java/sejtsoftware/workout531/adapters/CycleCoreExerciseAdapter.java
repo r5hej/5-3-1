@@ -21,11 +21,10 @@ public class CycleCoreExerciseAdapter extends RecyclerView.Adapter<CycleCoreExer
 
 
     public CycleCoreExerciseAdapter(CoreExercise data) {
-        for (int i = 0; i < data.getSets().size(); i++) {
-            mData.add(data.getSets().get(i));
-        }
+        mData.addAll(data.getSets());
 
-        mDataSize = mData.size() + 1;
+//        mDataSize = mData.size() + 1;
+        mDataSize = mData.size();
         if (data.getWeek() == 4)
             isDeload = true;
     }
@@ -53,18 +52,18 @@ public class CycleCoreExerciseAdapter extends RecyclerView.Adapter<CycleCoreExer
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        if (position == 0) {
-            holder.weight.setText("Weight");
-            holder.reps.setText("Reps");
-            return;
-        }
-        position--;
+//        if (position == 0) {
+//            holder.weight.setText("Weight");
+//            holder.reps.setText("Reps");
+//            return;
+//        }
+//        position--;
         int[] current = mData.get(position);
 
         holder.weight.setText(String.valueOf(current[0]));
         holder.reps.setText(String.valueOf(current[1]));
 
-        if (!isDeload && position == mDataSize - 2)
+        if (!isDeload && position == mDataSize - 1)
             holder.repsAchived.setVisibility(View.VISIBLE);
     }
 
