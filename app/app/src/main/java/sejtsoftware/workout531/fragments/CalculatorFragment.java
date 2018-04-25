@@ -113,7 +113,7 @@ public class CalculatorFragment extends Fragment {
             rm.setWeight(mExerciseData.get(key).get("weight"));
             rm.setReps(mExerciseData.get(key).get("reps"));
 
-            Database.getInstance().activeRMValueDao().insertRow(rm);
+            Database.getInstance().activeRMValueDao().insertRM(rm);
         }
     }
 

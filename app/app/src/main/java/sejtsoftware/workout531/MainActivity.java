@@ -7,27 +7,43 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 
 import sejtsoftware.workout531.fragments.CalculatorFragment;
 import sejtsoftware.workout531.fragments.CycleFragment;
+import sejtsoftware.workout531.helpers.database.ActiveRMValue;
 import sejtsoftware.workout531.helpers.database.Database;
-//import sejtsoftware.workout531.helpers.database.CoreExercise;
-//import sejtsoftware.workout531.helpers.database.ExerciseDatabase;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawer;
-//    private ExerciseDatabase mDb;
-//    private ArrayList<CoreExercise> mExercises;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        mDb = ExerciseDatabase.getInstance(MainActivity.this);
-
         Database.init(this);
+
+        int count = 0;
+        try {
+            count = Database.getInstance().activeRMValueDao().getRowCount();
+
+        } catch (Exception e) {
+            Log.d("dberror", e.toString());
+        }
+        if (count == 0) {
+            String[] exercises = new String[]{"squat", "bench", "deadlift", "ohpress"};
+
+            for (String item : exercises) {
+                ActiveRMValue rm = new ActiveRMValue();
+                rm.setExerciseName(item);
+                rm.setReps(0);
+                rm.setWeight(0);
+                rm.setRM(0);
+                Database.getInstance().activeRMValueDao().insertRM(rm);
+            }
+        }
 
         // Add initial fragment to base view
         CycleFragment initialFragment = new CycleFragment();

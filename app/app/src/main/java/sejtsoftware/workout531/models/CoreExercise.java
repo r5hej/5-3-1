@@ -14,13 +14,6 @@ public class CoreExercise {
     private double mOneRm, mEstimatedOneRm;
     private int mCycle, mWeek;
 
-//    public CoreExercise(String name) {
-//        this(name, 0, 0, 0, 0);
-//    }
-
-//    public CoreExercise(String name, int reps, int weight) {
-//        this(name, reps, weight, 0, 0);
-//    }
 
     public CoreExercise(String name, int cycle, int week) {
         mName = name;

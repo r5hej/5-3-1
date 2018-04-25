@@ -10,7 +10,7 @@ import java.util.List;
 
 @android.arch.persistence.room.Dao
 public interface ActiveRMValueDao {
-    @Query("SELECT rm FROM ActiveRMValue WHERE exerciseName == (:exercise)")
+    @Query("SELECT rm FROM ActiveRMValue WHERE exerciseName == :exercise")
     double getRM(String exercise);
 
     @Query("SELECT * FROM ActiveRMValue")
@@ -20,7 +20,5 @@ public interface ActiveRMValueDao {
     int getRowCount();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertRow(ActiveRMValue rm);
-
-
+    void insertRM(ActiveRMValue rm);
 }

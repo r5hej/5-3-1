@@ -33,10 +33,10 @@ public class CycleFragment extends Fragment {
         CoreExercise coreExercise = new CoreExercise("squat", 3, 3);
 
 
-        RecyclerView rcCore = getView().findViewById(R.id.cycle_core_recyclerview);
-        CycleCoreExerciseAdapter coreAdapter = new CycleCoreExerciseAdapter(coreExercise);
-        rcCore.setAdapter(coreAdapter);
-        rcCore.setLayoutManager(new LinearLayoutManager(getContext()));
+//        RecyclerView rcCore = getView().findViewById(R.id.cycle_core_recyclerview);
+//        CycleCoreExerciseAdapter coreAdapter = new CycleCoreExerciseAdapter(coreExercise);
+//        rcCore.setAdapter(coreAdapter);
+//        rcCore.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Populate assistance recyclerview
         ArrayList<AssistanceExercise> assistanceData = new ArrayList<>();
