@@ -21,8 +21,6 @@ import sejtsoftware.workout531.models.AssistanceExercise;
 import sejtsoftware.workout531.models.CoreExercise;
 
 public class CycleFragment extends Fragment {
-    Toolbar mToolbar;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -55,8 +53,7 @@ public class CycleFragment extends Fragment {
         rcAssistance.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
-    private void initToolbar(View v) {
-//        mToolbar = v.findViewById(R.id.cycle_toolbar);
-//        mToolbar.inflateMenu(R.menu.cycle_toolbar_menu);
+    private void initToolbar(View view) {
+
     }
 }
