@@ -52,42 +52,38 @@ public class MainActivity extends AppCompatActivity {
         // Initialize drawer and set event listener
         mDrawer = findViewById(R.id.drawer_layout);
         NavigationView navViewLeft = findViewById(R.id.nav_view_left);
-        navViewLeft.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem item) {
-                        item.setChecked(true);
+        navViewLeft.setNavigationItemSelectedListener(item -> {
+            item.setChecked(true);
 
-                        switch (item.getTitle().toString()) {
-                            case "Cycle":
-                                break;
+            switch (item.getTitle().toString()) {
+                case "Cycle":
+                    CycleFragment cycleFragment = new CycleFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_placeholder, cycleFragment).commit();
+                    break;
 
-                            case "Calculator":
-                                CalculatorFragment calcFragment = new CalculatorFragment();
-                                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_placeholder, calcFragment).commit();
-                                break;
-                        }
+                case "Calculator":
+                    CalculatorFragment calcFragment = new CalculatorFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_placeholder, calcFragment).commit();
+                    break;
+            }
 
-                        mDrawer.closeDrawers();
+            mDrawer.closeDrawers();
 
-                        return true;
-                    }
-                });
+            return true;
+        });
 
         NavigationView navViewRight = findViewById(R.id.nav_view_right);
         navViewRight.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem item) {
-                        item.setChecked(true);
-                        mDrawer.closeDrawers();
+                item -> {
+                    item.setChecked(true);
+                    mDrawer.closeDrawers();
 
-                        return true;
-                    }
+                    return true;
                 });
 
         // Set toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
+
         setSupportActionBar(toolbar);
 
         // Set drawer menu btn on toolbar

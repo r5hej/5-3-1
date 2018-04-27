@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,8 @@ import sejtsoftware.workout531.models.AssistanceExercise;
 import sejtsoftware.workout531.models.CoreExercise;
 
 public class CycleFragment extends Fragment {
+    Toolbar mToolbar;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -30,17 +33,19 @@ public class CycleFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        initToolbar(view);
+
         CoreExercise coreExercise = new CoreExercise("squat", 3, 3);
 
 
-//        RecyclerView rcCore = getView().findViewById(R.id.cycle_core_recyclerview);
-//        CycleCoreExerciseAdapter coreAdapter = new CycleCoreExerciseAdapter(coreExercise);
-//        rcCore.setAdapter(coreAdapter);
-//        rcCore.setLayoutManager(new LinearLayoutManager(getContext()));
+        RecyclerView rcCore = getView().findViewById(R.id.cycle_core_recyclerview);
+        CycleCoreExerciseAdapter coreAdapter = new CycleCoreExerciseAdapter(coreExercise);
+        rcCore.setAdapter(coreAdapter);
+        rcCore.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Populate assistance recyclerview
         ArrayList<AssistanceExercise> assistanceData = new ArrayList<>();
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             assistanceData.add(new AssistanceExercise("Squat", 42, 5));
         }
 
@@ -48,5 +53,10 @@ public class CycleFragment extends Fragment {
         CycleAssistanceExerciseAdapter assistanceAdapter = new CycleAssistanceExerciseAdapter(assistanceData);
         rcAssistance.setAdapter(assistanceAdapter);
         rcAssistance.setLayoutManager(new LinearLayoutManager(getContext()));
+    }
+
+    private void initToolbar(View v) {
+//        mToolbar = v.findViewById(R.id.cycle_toolbar);
+//        mToolbar.inflateMenu(R.menu.cycle_toolbar_menu);
     }
 }

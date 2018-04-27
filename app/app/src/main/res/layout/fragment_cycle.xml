@@ -77,23 +77,23 @@
         app:layout_constraintGuide_percent=".66" />
 
 
-    <ImageButton
-        android:id="@+id/cycle_next_exercise"
-        style="@style/FullSizeBottomRowButton"
-        android:layout_width="0dp"
-        android:src="@drawable/ic_navigate_next_black_56dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cycle_previous_exercise" />
+    <!--<ImageButton-->
+    <!--android:id="@+id/cycle_next_exercise"-->
+    <!--style="@style/FullSizeBottomRowButton"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:src="@drawable/ic_navigate_next_black_56dp"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintStart_toEndOf="@+id/cycle_previous_exercise" />-->
 
-    <ImageButton
-        android:id="@+id/cycle_previous_exercise"
-        style="@style/FullSizeBottomRowButton"
-        android:layout_width="0dp"
-        android:src="@drawable/ic_navigate_before_black_56dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/cycle_next_exercise"
-        app:layout_constraintStart_toStartOf="parent" />
+    <!--<ImageButton-->
+    <!--android:id="@+id/cycle_previous_exercise"-->
+    <!--style="@style/FullSizeBottomRowButton"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:src="@drawable/ic_navigate_before_black_56dp"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintEnd_toStartOf="@+id/cycle_next_exercise"-->
+    <!--app:layout_constraintStart_toStartOf="parent" />-->
 
     <TextView
         android:id="@+id/cycle_weight_textview"
@@ -133,6 +133,46 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/cycle_guideline2"
         app:layout_constraintTop_toBottomOf="@+id/cycle_divider1" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/cycle_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="?attr/colorPrimary"
+        android:gravity="center"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/cycle_toolbar_prev_week"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@drawable/ic_navigate_before_black_24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+            <ImageButton
+                android:id="@+id/cycle_toolbar_add_assistance"
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
+
+            <ImageButton
+                android:id="@+id/cycle_toolbar_next_week"
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.Toolbar>
+
 
 </android.support.constraint.ConstraintLayout>
 

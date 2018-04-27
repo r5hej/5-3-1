@@ -23,18 +23,16 @@ public class CycleCoreExerciseAdapter extends RecyclerView.Adapter<CycleCoreExer
     public CycleCoreExerciseAdapter(CoreExercise data) {
         mData.addAll(data.getSets());
 
-//        mDataSize = mData.size() + 1;
         mDataSize = mData.size();
         if (data.getWeek() == 4)
             isDeload = true;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView weight;
-        public TextView reps;
+    class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView weight, reps;
         public EditText repsAchived;
 
-        public ViewHolder(View v) {
+        ViewHolder(View v) {
             super(v);
             weight = v.findViewById(R.id.cycle_row_weight);
             reps = v.findViewById(R.id.cycle_row_reps);
@@ -52,12 +50,6 @@ public class CycleCoreExerciseAdapter extends RecyclerView.Adapter<CycleCoreExer
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-//        if (position == 0) {
-//            holder.weight.setText("Weight");
-//            holder.reps.setText("Reps");
-//            return;
-//        }
-//        position--;
         int[] current = mData.get(position);
 
         holder.weight.setText(String.valueOf(current[0]));
