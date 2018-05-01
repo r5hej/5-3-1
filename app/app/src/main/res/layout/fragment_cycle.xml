@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="25dp">
 
     <TextView
         android:id="@+id/cycle_date_textview"
@@ -41,6 +42,15 @@
         android:background="@color/divider"
         app:layout_constraintTop_toBottomOf="@+id/cycle_week_textview" />
 
+    <View
+        android:id="@+id/cycle_divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:background="@color/divider"
+        app:layout_constraintBottom_toBottomOf="@+id/guideline3" />
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/cycle_core_recyclerview"
@@ -48,7 +58,7 @@
         android:layout_height="0dp"
         android:layout_marginRight="0dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/cycle_assistance_recyclewview"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cycle_reps_textview" />
@@ -57,11 +67,11 @@
         android:id="@+id/cycle_assistance_recyclewview"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cycle_core_recyclerview" />
+        app:layout_constraintTop_toBottomOf="@+id/cycle_divider2" />
 
     <android.support.constraint.Guideline
         android:id="@+id/cycle_guideline1"
@@ -115,6 +125,27 @@
         app:layout_constraintStart_toStartOf="@+id/cycle_guideline2"
         app:layout_constraintTop_toBottomOf="@+id/cycle_divider1" />
 
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".5" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/cycle_assistance_exercise_title"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/cycle_assistance_recyclewview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cycle_divider2" />
+
+
+    <include layout="@layout/cycle_fab_toolbar" />
 </android.support.constraint.ConstraintLayout>
 
 

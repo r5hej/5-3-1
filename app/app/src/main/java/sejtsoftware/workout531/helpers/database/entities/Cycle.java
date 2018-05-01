@@ -1,10 +1,10 @@
-package sejtsoftware.workout531.helpers.database;
+package sejtsoftware.workout531.helpers.database.entities;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity(tableName = "cycle")
+@Entity(tableName = "CycleArchive")
 public class Cycle {
     @PrimaryKey
     private int uid;

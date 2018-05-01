@@ -12,7 +12,7 @@ import android.view.MenuItem;
 
 import sejtsoftware.workout531.fragments.CalculatorFragment;
 import sejtsoftware.workout531.fragments.CycleFragment;
-import sejtsoftware.workout531.helpers.database.ActiveRMValue;
+import sejtsoftware.workout531.helpers.database.entities.ActiveRMValue;
 import sejtsoftware.workout531.helpers.database.Database;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             Log.d("dberror", e.toString());
         }
         if (count == 0) {
-            String[] exercises = new String[]{"squat", "bench", "deadlift", "ohpress"};
+            String[] exercises = new String[]{"squat", "bench", "deadlift", "military"};
 
             for (String item : exercises) {
                 ActiveRMValue rm = new ActiveRMValue();

@@ -16,6 +16,18 @@ public class AssistanceExercise {
         return mName;
     }
 
+    public void setName(String name) {
+        mName = name;
+    }
+
+    public void setWeight(int weight) {
+        mWeight = weight;
+    }
+
+    public void setReps(int reps) {
+        mReps = reps;
+    }
+
     public int getWeight() {
         return mWeight;
     }

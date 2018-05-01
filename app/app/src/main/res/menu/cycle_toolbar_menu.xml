@@ -4,17 +4,17 @@
 
     <item
         android:id="@+id/menu_item_cycle_fab_prev_week"
-        android:icon="@drawable/ic_navigate_before_black_24dp"
-        app:showAsAction="ifRoom" />
+        android:icon="@drawable/ic_navigate_before_black_40dp"
+        android:title="prev" />
 
     <item
         android:id="@+id/menu_item_cycle_fab_add_assistance"
-        android:icon="@drawable/ic_add_black_24dp"
-        app:showAsAction="ifRoom" />
+        android:icon="@drawable/ic_add_black_40dp"
+        android:title="add" />
 
     <item
         android:id="@+id/menu_item_cycle_fab_next_week"
-        android:icon="@drawable/ic_navigate_next_black_24dp"
-        app:showAsAction="ifRoom" />
+        android:icon="@drawable/ic_navigate_next_black_40dp"
+        android:title="next" />
 
 </menu>

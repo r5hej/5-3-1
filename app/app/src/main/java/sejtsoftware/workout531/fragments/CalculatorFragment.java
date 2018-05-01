@@ -21,7 +21,7 @@ import java.util.Set;
 
 import sejtsoftware.workout531.R;
 import sejtsoftware.workout531.helpers.Calculations;
-import sejtsoftware.workout531.helpers.database.ActiveRMValue;
+import sejtsoftware.workout531.helpers.database.entities.ActiveRMValue;
 import sejtsoftware.workout531.helpers.database.Database;
 
 public class CalculatorFragment extends Fragment {

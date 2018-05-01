@@ -29,7 +29,6 @@
         app:layout_constraintStart_toStartOf="@+id/guideline1"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <EditText
         android:id="@+id/cycle_row_reps_achieved"
         android:layout_width="0dp"
@@ -56,5 +55,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent=".66" />
+
 
 </android.support.constraint.ConstraintLayout>

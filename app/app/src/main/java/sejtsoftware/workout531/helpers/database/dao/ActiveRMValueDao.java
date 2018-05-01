@@ -1,12 +1,13 @@
-package sejtsoftware.workout531.helpers.database;
+package sejtsoftware.workout531.helpers.database.dao;
 
 
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import sejtsoftware.workout531.helpers.database.entities.ActiveRMValue;
 
 @android.arch.persistence.room.Dao
 public interface ActiveRMValueDao {

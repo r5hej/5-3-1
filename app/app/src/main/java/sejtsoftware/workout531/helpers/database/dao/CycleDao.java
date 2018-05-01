@@ -1,4 +1,4 @@
-package sejtsoftware.workout531.helpers.database;
+package sejtsoftware.workout531.helpers.database.dao;
 
 
 import android.arch.persistence.room.Delete;
